@@ -6,6 +6,8 @@ public class TaskItem {
     public bool IsCompleted { get; set; } = false;
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
+    public DateTime? DueDate { get; set; }
+
     [Required]
     [MaxLength(200)]
     public string Title { get; set; } = string.Empty;
