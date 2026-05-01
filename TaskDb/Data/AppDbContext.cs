@@ -29,7 +29,7 @@ public class AppDbContext : DbContext {
             new TaskItem {
                 Id = 3,
                 Title = "Написать README",
-                Description = "Описать структуру проектва",
+                Description = "Описать структуру проекта",
                 Priority = "Normal",
                 IsCompleted = false,
                 CreatedAt = new DateTime(2026, 1, 3, 0, 0, 0, DateTimeKind.Utc)
