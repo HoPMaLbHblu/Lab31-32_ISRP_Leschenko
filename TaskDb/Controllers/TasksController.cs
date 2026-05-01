@@ -165,4 +165,20 @@ public class TasksController : ControllerBase {
         && !t.IsCompleted).OrderBy(t => t.DueDate).ToListAsync();
         return Ok(overdue);
     }
+
+    [HttpPatch("complete_all")]
+    public async Task<ActionResult> CompleteAll() {
+        var tasks = await _db.Tasks
+            .Where(t => !t.IsCompleted)
+            .ExecuteUpdateAsync(s => s.SetProperty(t => t.IsCompleted, true));
+        return Ok(new { Updated = tasks });
+    }
+
+    [HttpDelete("completed")]
+    public async Task<ActionResult> DeleteCompleted() {
+        var tasks = await _db.Tasks
+            .Where(t => t.IsCompleted)
+            .ExecuteDeleteAsync();
+        return Ok(new { Deleted = tasks });
+    }
 }
